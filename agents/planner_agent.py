@@ -91,7 +91,12 @@ def validate_and_rank_results(results, query):
 
         # funding filter
         if constraints["funding_required"]:
-            funding = r.get("funding", "").lower()
+            funding = r.get("funding", "")
+
+            if isinstance(funding, dict):
+                funding = " ".join(str(v) for v in funding.values())
+
+            funding = str(funding).lower()
 
             if funding == "not found":
                 continue
