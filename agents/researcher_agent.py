@@ -68,7 +68,7 @@ def research_phd_programs(query):
     structured_results = []
     seen_urls = set()
 
-    for result in tqdm(search_results[:20], desc="Processing pages"):
+    for result in tqdm(search_results[:50], desc="Processing pages"):
 
         url = result["url"]
 
