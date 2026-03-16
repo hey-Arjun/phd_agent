@@ -10,7 +10,7 @@ TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 client = TavilyClient(api_key=TAVILY_API_KEY)
 
 
-def search_phd_programs(query, max_results=25):
+def search_phd_programs(query, max_results=50):
 
     search_query = f"{query} phd program site:.edu OR site:.ac.uk OR site:.de OR site:.nl OR site:.se OR site:.fi OR site:.no OR site:.dk"
 

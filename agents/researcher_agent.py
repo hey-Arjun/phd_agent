@@ -66,7 +66,7 @@ def research_phd_programs(query):
 )
 
     structured_results = []
-    seen_universities = set()
+    seen_urls = set()
 
     for result in tqdm(search_results[:20], desc="Processing pages"):
 
@@ -132,15 +132,15 @@ def research_phd_programs(query):
             if phd_info.get("country") == "Not found":
                 phd_info["country"] = detect_country(url, combined_text)
 
-            # skip duplicates
-            if phd_info["university"] in seen_universities:
-                print("Duplicate university skipped")
+            # skip duplicate URLs instead of universities
+            if url in seen_urls:
+                print("Duplicate URL skipped")
                 continue
 
             if phd_info.get("application_link") == "Not found":
                 phd_info["application_link"] = url
 
-            seen_universities.add(phd_info["university"])
+            seen_urls.add(url)
 
             phd_info["source_url"] = url
 
